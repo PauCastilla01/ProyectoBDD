@@ -27,4 +27,3 @@ prompt =====================================
 connect sys/&&syspass@pcpbdd_s2 as sysdba
 @s-01-netmax-usuario.sql
 Prompt Listo!
-disconnect

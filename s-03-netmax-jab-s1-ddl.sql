@@ -3,7 +3,16 @@
 --@Descripción: Creación de fragmentos en el sitio 
 clear screen
 whenever sqlerror exit rollback;
-
+drop table if exists USUARIO_F3_JAB_S1;
+drop table if exists PLAYLIST_F1_JAB_S1;
+drop table if exists SERIE_F1_JAB_S1;
+drop table if exists PELICULA_F1_JAB_S1;
+drop table if exists DOCUMENTAL_F1_JAB_S1;
+drop table if exists PROGRAMA_F1_JAB_S1;
+drop table if exists TIPO_CUENTA_R_JAB_S1;
+drop table if exists TIPO_SERIE_R_JAB_S1;
+drop table if exists STATUS_PROGRAMA;
+drop table if exists PAIS_R_JAB_S1;
 
 CREATE TABLE PAIS_R_JAB_S1(
     PAIS_ID       NUMBER(2, 0)    NOT NULL,
@@ -50,7 +59,7 @@ CREATE TABLE PROGRAMA_F1_JAB_S1(
     STATUS_PROGRAMA_ID    NUMBER(2, 0)     NOT NULL,
     CONSTRAINT PROGRAMA_F1_JAB_S1_PK PRIMARY KEY (PROGRAMA_ID), 
     CONSTRAINT PROGRAMA_F1_JAB_S1_STATUS_PROGRAMA_ID_FK FOREIGN KEY (STATUS_PROGRAMA_ID)
-    REFERENCES STATUS_PROGRAMA_JAB_S1(STATUS_PROGRAMA_ID)
+    REFERENCES STATUS_PROGRAMA(STATUS_PROGRAMA_ID)
 )
 ;
 

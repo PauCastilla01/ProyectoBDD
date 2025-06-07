@@ -3,6 +3,11 @@
 --@Descripción: Creación de fragmentos en el sitio 1 (nodo 2)
 clear screen
 whenever sqlerror exit rollback;
+drop table if exists USUARIO_F5_PCP_S2;
+drop table if exists TIPO_SERIE_R_PCP_S2;
+drop table if exists TIPO_CUENTA_R_PCP_S2;
+drop table if exists STATUS_PROGRAMA;
+drop table if exists PAIS_R_PCP_S2;
 
 CREATE TABLE PAIS_R_PCP_S2(
     PAIS_ID       NUMBER(2, 0)    NOT NULL,
