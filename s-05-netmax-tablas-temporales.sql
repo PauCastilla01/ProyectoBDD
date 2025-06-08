@@ -46,7 +46,7 @@ create global temporary table ti_documental_1 (
 programa_id number(10,0) constraint ti_documental_1_pk primary key,
 tematica varchar2(100) not null,
 duracion numeric(5,2) not null,
-pais_id numeric(2,0) not null
+pais_id numeric(2,0) not null,
 trailer blob not null
 ) on commit preserve rows;
 

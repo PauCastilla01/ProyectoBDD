@@ -6,14 +6,14 @@
 Prompt creando vista DOCUMENTAL
 create or replace view DOCUMENTAL as
 select programa_id,tematica,duracion,
-get_remote_trailer_f1_by_id(programa_id),pais_id
+get_remote_trailer_f1_by_id(programa_id) as trailer ,pais_id
 from documental_f1
 union all
 select programa_id,tematica,duracion,trailer,pais_id
 from documental_f2
 union all
 select programa_id,tematica,duracion,
-get_remote_trailer_f3_by_id(programa_id),pais_id
+get_remote_trailer_f3_by_id(programa_id) as trailer ,pais_id
 from documental_f3;
 --ARCHIVO_PROGRAMA
 Prompt creando vista ARCHIVO_PROGRAMA

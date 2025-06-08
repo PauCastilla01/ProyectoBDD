@@ -1,6 +1,6 @@
 --@Autor:  Argueta Bravo y Castilla Padilla
 --@Fecha creación: dd/mm/yyyy
---@Descripción: Creación de vistas comunes a todos los nodos
+--@descripcion: Creación de vistas comunes a todos los nodos
 -- Se excluyen las vistas que contienen columnas BLOB
 
 --PLAYLIST
@@ -32,32 +32,32 @@ from serie_f3;
 --PELICULA
 Prompt creando vista PELICULA
 create or replace view PELICULA as
-select programa_id,duracion,sipnosis,calificacion,pelicula_antecedente
+select programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente
 from pelicula_f1
 union all
-select programa_id,duracion,sipnosis,calificacion,pelicula_antecedente
+select programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente
 from pelicula_f2
 union all
-select programa_id,duracion,sipnosis,calificacion,pelicula_antecedente
+select programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente
 from pelicula_f3;
 
 --PROGRAMA
 Prompt creando vista PROGRAMA
 create or replace view PROGRAMA as
-select programa_id,folio,nombre,Descripción,fecha_status,tipo,status_programa_id
+select programa_id,folio,nombre,descripcion,fecha_status,tipo,status_programa_id
 from programa_f1
 union all
-select programa_id,folio,nombre,Descripción,fecha_status,tipo,status_programa_id
+select programa_id,folio,nombre,descripcion,fecha_status,tipo,status_programa_id
 from programa_f2
 union all
-select programa_id,folio,nombre,Descripción,fecha_status,tipo,status_programa_id
+select programa_id,folio,nombre,descripcion,fecha_status,tipo,status_programa_id
 from programa_f3;
 
 --USUARIO
 Prompt creando vista USUARIO
 create or replace view USUARIO as
 select u1.usuario_id,u1.password,u1.num_tarjeta,up.email,up.nombre,up.ap_paterno,up.ap_materno,up.fecha_ingreso,
-       up.fecha_ingreso,up.fecha_cuenta_fin,up.vigente,up.tipo_cuenta_id
+       up.fecha_cuenta_fin,up.vigente,up.tipo_cuenta_id
 from usuario_f1 u1
 join (select usuario_id,email,nombre,ap_paterno,ap_materno,fecha_ingreso,fecha_cuenta_fin,vigente,tipo_cuenta_id
       from usuario_f2
