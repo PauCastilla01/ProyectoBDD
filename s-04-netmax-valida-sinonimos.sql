@@ -1,4 +1,4 @@
---@Autor: Jorge A. Rodríguez C
+--@Autor:  Argueta Bravo y Castilla Padilla
 --@Fecha creación: dd/mm/yyyy
 --@Descripción: Script de validación de sinónimos
 
