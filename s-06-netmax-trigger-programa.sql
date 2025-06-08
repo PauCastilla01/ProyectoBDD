@@ -14,13 +14,13 @@ begin
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en programa_f1');
                 end if;
-            elsif substr(:new.folio, 1, 1) between 'N' and 'Z' then and :new:status_programa_id in (1, 2, 3) then
+            elsif substr(:new.folio, 1, 1) between 'N' and 'Z'  and :new.status_programa_id in (1, 2, 3) then
                 insert into programa_f2(programa_id,folio,nombre,descripcion,fecha_status,tipo,status_programa_id)
                 values (:new.programa_id, :new.folio, :new.nombre, :new.descripcion, :new.fecha_status, :new.tipo, :new.status_programa_id);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en programa_f2');
                 end if;
-            elsif substr(:new.folio, 1, 1) between 'N' and 'Z' and :new:status_programa_id in (4,5) then
+            elsif substr(:new.folio, 1, 1) between 'N' and 'Z' and :new.status_programa_id in (4,5) then
                 insert into programa_f3(programa_id,folio,nombre,descripcion,fecha_status,tipo,status_programa_id)
                 values (:new.programa_id, :new.folio, :new.nombre, :new.descripcion, :new.fecha_status, :new.tipo, :new.status_programa_id);
                 if sql%rowcount != 1 then
@@ -39,12 +39,12 @@ begin
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en programa_f1');
                 end if;
-            elsif substr(:old.folio, 1, 1) between 'N' and 'Z' and :old:status_programa_id in (1, 2, 3) then
+            elsif substr(:old.folio, 1, 1) between 'N' and 'Z' and :old.status_programa_id in (1, 2, 3) then
                 delete from programa_f2 where programa_id = :old.programa_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en programa_f2');
                 end if;
-            elsif substr(:old.folio, 1, 1) between 'N' and 'Z' and :old:status_programa_id in (4,5) then
+            elsif substr(:old.folio, 1, 1) between 'N' and 'Z' and :old.status_programa_id in (4,5) then
                 delete from programa_f3 where programa_id = :old.programa_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en programa_f3');

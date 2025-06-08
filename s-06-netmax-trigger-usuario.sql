@@ -8,25 +8,25 @@ declare
 begin
     case
         when inserting then
-            if :new:vigente = 0 then
+            if :new.vigente = 0 then
                 insert into usuario_f2(usuario_id, email, nombre, ap_paterno, ap_materno, fecha_ingreso, fecha_cuenta_fin, vigente, tipo_cuenta_id)
                 values (:new.usuario_id, :new.email, :new.nombre, :new.ap_paterno, :new.ap_materno, :new.fecha_ingreso, :new.fecha_cuenta_fin, :new.vigente, :new.tipo_cuenta_id);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en usuario_f2');
                 end if;
-            elsif :new:vigente = 1 and :new:tipo_cuenta_id = 1 then
+            elsif :new.vigente = 1 and :new.tipo_cuenta_id = 1 then
                 insert into usuario_f3(usuario_id, email, nombre, ap_paterno, ap_materno, fecha_ingreso, fecha_cuenta_fin, vigente, tipo_cuenta_id)
                 values (:new.usuario_id, :new.email, :new.nombre, :new.ap_paterno, :new.ap_materno, :new.fecha_ingreso, :new.fecha_cuenta_fin, :new.vigente, :new.tipo_cuenta_id);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en usuario_f3');
                 end if;
-            elsif :new:vigente = 1 and :new:tipo_cuenta_id = 2 then
+            elsif :new.vigente = 1 and :new.tipo_cuenta_id = 2 then
                 insert into usuario_f4(usuario_id, email, nombre, ap_paterno, ap_materno, fecha_ingreso, fecha_cuenta_fin, vigente, tipo_cuenta_id)
                 values (:new.usuario_id, :new.email, :new.nombre, :new.ap_paterno, :new.ap_materno, :new.fecha_ingreso, :new.fecha_cuenta_fin, :new.vigente, :new.tipo_cuenta_id);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en usuario_f4');
                 end if;
-            elsif :new:vigente = 1 and :new:tipo_cuenta_id = 3 then
+            elsif :new.vigente = 1 and :new.tipo_cuenta_id = 3 then
                 insert into usuario_f5(usuario_id, email, nombre, ap_paterno, ap_materno, fecha_ingreso, fecha_cuenta_fin, vigente, tipo_cuenta_id)
                 values (:new.usuario_id, :new.email, :new.nombre, :new.ap_paterno, :new.ap_materno, :new.fecha_ingreso, :new.fecha_cuenta_fin, :new.vigente, :new.tipo_cuenta_id);
                 if sql%rowcount != 1 then
@@ -47,22 +47,22 @@ begin
             raise_application_error(-20030, 'Se intentó realizar una operación update en una tabla con esquema de fragmentación. Para propósitos del proyecto, esta operación no estará implementada.');
 
         when deleting then
-            if :old:vigente = 0 then
+            if :old.vigente = 0 then
                 delete from usuario_f2 where usuario_id = :old.usuario_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en usuario_f2');
                 end if;
-            elsif :old:vigente = 1 and :old:tipo_cuenta_id = 1 then
+            elsif :old.vigente = 1 and :old.tipo_cuenta_id = 1 then
                 delete from usuario_f3 where usuario_id = :old.usuario_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en usuario_f3');
                 end if;
-            elsif :old:vigente = 1 and :old:tipo_cuenta_id = 2 then
+            elsif :old.vigente = 1 and :old.tipo_cuenta_id = 2 then
                 delete from usuario_f4 where usuario_id = :old.usuario_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en usuario_f4');
                 end if;
-            elsif :old:vigente = 1 and :old:tipo_cuenta_id = 3 then
+            elsif :old.vigente = 1 and :old.tipo_cuenta_id = 3 then
                 delete from usuario_f5 where usuario_id = :old.usuario_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en usuario_f5');

@@ -10,31 +10,31 @@ begin
     case
         when inserting then
            select count(*) into v_count
-            from programa_1
+            from programa_f1
             where programa_id =:new.programa_id;
             if v_count >0 then 
-                insert into serie_1(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
-                values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie);
+                insert into serie_f1(programa_id,num_capitulos,duracion_capitulo,tipo_serie_id) 
+                values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie_id);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en serie_1');
                 end if;
             else
                 select count(*) into v_count
-                from programa_2
+                from programa_f2
                 where programa_id =:new.programa_id;
                 if v_count >0 then 
-                    insert into serie_2(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
-                    values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie);
+                    insert into serie_f2(programa_id,num_capitulos,duracion_capitulo,tipo_serie_id) 
+                    values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie_id);
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se insertó el registro en serie_2');
                     end if;
                 else
                     select count(*) into v_count
-                    from programa_3
+                    from programa_f3
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into serie_3(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
-                        values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie);
+                        insert into serie_f3(programa_id,num_capitulos,duracion_capitulo,tipo_serie_id) 
+                        values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie_id);
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se insertó el registro en serie_3');
                         end if;
@@ -49,28 +49,28 @@ begin
 
         when deleting then
             select count(*) into v_count
-            from programa_1
+            from programa_f1
             where programa_id =:old.programa_id;
             if v_count >0 then 
-                delete from serie_1 where programa_id =:old.programa_id;
+                delete from serie_f1 where programa_id =:old.programa_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en serie_1');
                 end if;
             else
                 select count(*) into v_count
-                from programa_2
+                from programa_f2
                 where programa_id =:old.programa_id;
                 if v_count >0 then 
-                    delete from serie_2 where programa_id =:old.programa_id;
+                    delete from serie_f2 where programa_id =:old.programa_id;
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se eliminó el registro en serie_2');
                     end if;
                 else
                     select count(*) into v_count
-                    from programa_3
+                    from programa_f3
                     where programa_id =:old.programa_id;
                     if v_count >0 then 
-                        delete from serie_3 where programa_id =:old.programa_id;
+                        delete from serie_f3 where programa_id =:old.programa_id;
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se eliminó el registro en serie_3');
                         end if;

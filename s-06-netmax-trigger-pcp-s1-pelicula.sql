@@ -10,31 +10,31 @@ begin
     case
         when inserting then
            select count(*) into v_count
-            from programa_1
+            from programa_f1
             where programa_id =:new.programa_id;
             if v_count >0 then 
-                insert into pelicula_1(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
-                values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente_id);
+                insert into pelicula_f1(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente)
+                values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en pelicula_1');
                 end if;
             else
                 select count(*) into v_count
-                from programa_2
+                from programa_f2
                 where programa_id =:new.programa_id;
                 if v_count >0 then 
-                    insert into pelicula_2(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
-                    values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente_id);
+                    insert into pelicula_f2(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente)
+                    values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente);
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se insertó el registro en pelicula_2');
                     end if;
                 else
                     select count(*) into v_count
-                    from programa_3
+                    from programa_f3
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into pelicula_3(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
-                        values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente_id);
+                        insert into pelicula_f3(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente)
+                        values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente);
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se insertó el registro en pelicula_3');
                         end if;
@@ -49,28 +49,28 @@ begin
 
        when deleting then
             select count(*) into v_count
-            from programa_1
+            from programa_f1
             where programa_id =:old.programa_id;
             if v_count >0 then 
-                delete from pelicula_1 where programa_id =:old.programa_id;
+                delete from pelicula_f1 where programa_id =:old.programa_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en pelicula_1');
                 end if;
             else
                 select count(*) into v_count
-                from programa_2
+                from programa_f2
                 where programa_id =:old.programa_id;
                 if v_count >0 then 
-                    delete from pelicula_2 where programa_id =:old.programa_id;
+                    delete from pelicula_f2 where programa_id =:old.programa_id;
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se eliminó el registro en pelicula_2');
                     end if;
                 else
                     select count(*) into v_count
-                    from programa_3
+                    from programa_f3
                     where programa_id =:old.programa_id;
                     if v_count >0 then 
-                        delete from pelicula_3 where programa_id =:old.programa_id;
+                        delete from pelicula_f3 where programa_id =:old.programa_id;
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se eliminó el registro en pelicula_3');
                         end if;
