@@ -11,17 +11,17 @@ begin
             if :new:tamanio >10 then
                 insert into archivo_programa_1(num_archivo,programa_id,tamanio)
                 values (:new.num_archivo, :new.programa_id, :new.tamanio);
-                insert into ts_archivo_programa_1(num_archivo,programa_id,archivo)
-                values (:new.num_archivo, :new.programa_id, :new.archivo);
-                insert into archivo_programa_1 
-                    select * from ts_archivo_programa_1 where num_archivo = :new.num_archivo;
-                delete from ts_archivo_programa_1 where num_archivo = :new.num_archivo;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en archivo_programa_1');
                 end if;
             elsif :new:tamanio <=10 then
                 insert into archivo_programa_2(num_archivo,programa_id,archivo,tamanio)
                 values (:new.num_archivo, :new.programa_id, :new.archivo, :new.tamanio);
+                insert into ts_archivo_programa_2(num_archivo,programa_id,archivo)
+                values (:new.num_archivo, :new.programa_id, :new.archivo);
+                insert into archivo_programa_2 
+                    select * from ts_archivo_programa_2 where num_archivo = :new.num_archivo;
+                delete from ts_archivo_programa_2 where num_archivo = :new.num_archivo;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en archivo_programa_2');
                 end if;
