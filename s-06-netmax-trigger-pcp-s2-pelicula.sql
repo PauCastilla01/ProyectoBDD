@@ -10,13 +10,13 @@ begin
     case
         when inserting then
            select count(*) into v_count
-            from programa_2
+            from programa_3
             where programa_id =:new.programa_id;
             if v_count >0 then 
-                insert into pelicula_2(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
+                insert into pelicula_3(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
                 values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente_id);
                 if sql%rowcount != 1 then
-                    raise_application_error(-20040, 'No se insertó el registro en pelicula_2');
+                    raise_application_error(-20040, 'No se insertó el registro en pelicula_3');
                 end if;
             else
                 select count(*) into v_count
@@ -30,13 +30,13 @@ begin
                     end if;
                 else
                     select count(*) into v_count
-                    from programa_3
+                    from programa_2
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into pelicula_3(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
+                        insert into pelicula_2(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente_id)
                         values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente_id);
                         if sql%rowcount != 1 then
-                            raise_application_error(-20040, 'No se insertó el registro en pelicula_3');
+                            raise_application_error(-20040, 'No se insertó el registro en pelicula_2');
                         end if;
                     else
                         raise_application_error(-20020, 'Error de integridad para el campo programa_id :'|| :new.programa_id || 

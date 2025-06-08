@@ -10,17 +10,17 @@ begin
     case
         when inserting then
            select count(*) into v_count
-          programa2
+          programa_3
             where programa_id =:new.programa_id;
             if v_count >0 then 
-                insert into serie_2(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
+                insert into serie_3(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
                 values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie);
                 if sql%rowcount != 1 then
-                    raise_application_error(-20040, 'No se insertó el registro en serie_2');
+                    raise_application_error(-20040, 'No se insertó el registro en serie_3');
                 end if;
             else
                 select count(*) into v_count
-              programa1
+              programa_1
                 where programa_id =:new.programa_id;
                 if v_count >0 then 
                     insert into serie_1(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
@@ -30,13 +30,13 @@ begin
                     end if;
                 else
                     select count(*) into v_count
-                  programa3
+                  programa_2
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into serie_3(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
+                        insert into serie_2(programa_id,num_capitulos,duracion_capitulo,tipo_serie) 
                         values (:new.programa_id, :new.num_capitulos, :new.duracion_capitulo, :new.tipo_serie);
                         if sql%rowcount != 1 then
-                            raise_application_error(-20040, 'No se insertó el registro en serie_3');
+                            raise_application_error(-20040, 'No se insertó el registro en serie_2');
                         end if;
                     else
                         raise_application_error(-20020, 'Error de integridad para el campo programa_id :'|| :new.programa_id || 
@@ -49,7 +49,7 @@ begin
 
         when deleting then
             select count(*) into v_count
-          programa2
+          programa_2
             where programa_id =:old.programa_id;
             if v_count >0 then 
                 delete from serie_2 where programa_id =:old.programa_id;
@@ -58,7 +58,7 @@ begin
                 end if;
             else
                 select count(*) into v_count
-              programa1
+              programa_1
                 where programa_id =:old.programa_id;
                 if v_count >0 then 
                     delete from serie_1 where programa_id =:old.programa_id;
@@ -67,7 +67,7 @@ begin
                     end if;
                 else
                     select count(*) into v_count
-                  programa3
+                  programa_3
                     where programa_id =:old.programa_id;
                     if v_count >0 then 
                         delete from serie_3 where programa_id =:old.programa_id;

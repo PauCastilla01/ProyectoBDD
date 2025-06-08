@@ -10,33 +10,33 @@ begin
     case
         when inserting then
            select count(*) into v_count
-            from programa_2
+            from programa_3
             where programa_id =:new.programa_id;
             if v_count >0 then 
-                insert into playlist_2(playlis_id,calificacion,indice,num_reproducciones,programa_id,usuario_id)
-                        values (:new.playlis_id, :new.calificacion, :new.indice, :new.num_reproducciones, :new.programa_id, :new.usuario_id);
+                insert into playlist_3(playlist_id,calificacion,indice,num_reproducciones,programa_id,usuario_id)
+                        values (:new.playlist_id, :new.calificacion, :new.indice, :new.num_reproducciones, :new.programa_id, :new.usuario_id);
                 if sql%rowcount != 1 then
-                    raise_application_error(-20040, 'No se insertó el registro en playlist_2');
+                    raise_application_error(-20040, 'No se insertó el registro en playlist_3');
                 end if;
             else
                 select count(*) into v_count
                 from programa_1
                 where programa_id =:new.programa_id;
                 if v_count >0 then 
-                    insert into playlist_1(playlis_id,calificacion,indice,num_reproducciones,programa_id,usuario_id)
-                        values (:new.playlis_id, :new.calificacion, :new.indice, :new.num_reproducciones, :new.programa_id, :new.usuario_id);
+                    insert into playlist_1(playlist_id,calificacion,indice,num_reproducciones,programa_id,usuario_id)
+                        values (:new.playlist_id, :new.calificacion, :new.indice, :new.num_reproducciones, :new.programa_id, :new.usuario_id);
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se insertó el registro en playlist_1');
                     end if;
                 else
                     select count(*) into v_count
-                    from programa_3
+                    from programa_2
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into playlist_3(playlis_id,calificacion,indice,num_reproducciones,programa_id,usuario_id)
-                        values (:new.playlis_id, :new.calificacion, :new.indice, :new.num_reproducciones, :new.programa_id, :new.usuario_id);
+                        insert into playlist_2(playlist_id,calificacion,indice,num_reproducciones,programa_id,usuario_id)
+                        values (:new.playlist_id, :new.calificacion, :new.indice, :new.num_reproducciones, :new.programa_id, :new.usuario_id);
                         if sql%rowcount != 1 then
-                            raise_application_error(-20040, 'No se insertó el registro en playlist_3');
+                            raise_application_error(-20040, 'No se insertó el registro en playlist_2');
                         end if;
                     else
                         raise_application_error(-20020, 'Error de integridad para el campo programa_id :'|| :new.programa_id || 

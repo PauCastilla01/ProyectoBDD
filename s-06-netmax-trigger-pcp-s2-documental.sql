@@ -16,7 +16,7 @@ begin
                 insert into documental_3(programa_id,tematica,duracion,trailer,pais_id)
                 values (:new.programa_id, :new.tematica, :new.duracion, :new.trailer, :new.pais_id);
                 if sql%rowcount != 1 then
-                    raise_application_error(-20040, 'No se insertó el registro en documental_2');
+                    raise_application_error(-20040, 'No se insertó el registro en documental_3');
                 end if;
             else
                 select count(*) into v_count
@@ -46,7 +46,7 @@ begin
                             select * from ts_documental_2 where programa_id = :new.programa_id;
                         delete from ts_documental_2 where programa_id = :new.programa_id;
                         if sql%rowcount != 1 then
-                            raise_application_error(-20040, 'No se insertó el registro en documental_3');
+                            raise_application_error(-20040, 'No se insertó el registro en documental_2');
                         end if;
                     else
                         raise_application_error(-20020, 'Error de integridad para el campo programa_id :'|| :new.programa_id || 
