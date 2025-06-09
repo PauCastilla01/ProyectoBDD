@@ -6,6 +6,12 @@ Prompt Creando objetos para leer datos BLOB
 Prompt creando directorio
 -- el usuario netmax debe tener el privilegio create any directory
 --Objeto tipo Directory para representar al campo archivo_programa.archivo
+create or replace directory proyecto_final_pdfs_dir as
+'/tmp/bdd/proyecto-final/pdfs';
+--Objeto tipo Directory empleado para almacenar los trailers de un documental.
+create or replace directory proyecto_final_trailers_dir as
+'/tmp/bdd/proyecto-final/trailers';
+--Objeto tipo Directory para representar al campo archivo_programa.archivo
 create or replace function fx_carga_blob(
     p_directory_name in varchar2,
     p_src_file_name in varchar2

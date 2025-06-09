@@ -50,4 +50,6 @@ create or replace synonym TIPO_CUENTA_R4 for TIPO_CUENTA_R_PCP_S4@pcpbdd_s2;
 create or replace synonym TIPO_SERIE_R4 for TIPO_SERIE_R_PCP_S4@pcpbdd_s2;
 create or replace synonym ARCHIVO_PROGRAMA_F1 for ARCHIVO_PROGRAMA_F1_PCP_S4@pcpbdd_s2;
 create or replace synonym PAIS_R4 for PAIS_R_PCP_S4@pcpbdd_s2;
+create or replace synonym HISTORICO_STATUS_PROGRAMA for HISTORICO_STATUS_PROGRAMA@pcpbdd_s2;
+
 

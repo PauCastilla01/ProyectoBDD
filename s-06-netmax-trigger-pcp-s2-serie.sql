@@ -83,10 +83,10 @@ begin
         else
             raise_application_error(-20050, 'Operación no soportada en el trigger t_dml_serie. Solo se permiten insert, update y delete.');
     end case;
-    commit;
+    ----    commit;
 exception
     when others then
-        rollback;
+        --    rollback;
         raise_application_error(-20000, 'Error en el trigger t_dml_serie: ' || sqlerrm);
 end;
 /

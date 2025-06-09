@@ -6,6 +6,9 @@ whenever sqlerror exit rollback;
 set serveroutput on
 Prompt Inciando creacion/eliminacion de usuarios.
 accept syspass char prompt 'Proporcione el password de sys: ' hide
+
+connect sys/&&syspass as sysdba
+ALTER SYSTEM SET GLOBAL_NAMES = TRUE SCOPE=BOTH;
 prompt =====================================
 prompt Creando usuario en jabbdd_s1
 prompt =====================================

@@ -83,7 +83,7 @@ begin
         else
             raise_application_error(-20050, 'Operación no soportada en el trigger t_dml_playlist. Solo se permiten insert, update y delete.');
     end case;
-    commit;
+    --    commit;
 exception
     when others then
         rollback;

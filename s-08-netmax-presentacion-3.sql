@@ -2,6 +2,7 @@
 --@Fecha creación: dd/mm/yyyy
 --@Descripción: Archivo de carga inicial - fragmentos
 clear screen
+set serveroutput on
 --Para visualizar export NLS_LANG=SPANISH_SPAIN.WE8ISO8859P1
 Prompt ======================================
 Prompt Preparando carga de Datos
@@ -13,8 +14,7 @@ Prompt Personalizando el formato de fechas
 alter session set nls_date_format='yyyy-mm-dd hh24:mi:ss';
 Prompt => Al ocurrir un error se saldrá del programa y se hará rollback
 whenever sqlerror exit rollback
-Pause => Presionar Enter para Iniciar con la extracción de datos binarios,
-Ctrl-C para cancelar
+Pause => Presionar Enter para Iniciar con la extracción de datos binarios, Ctrl-C para cancelar
 --Invoca a un shell script para realizar la extracción y copia de archivos
 !sh s-08-netmax-presentacion-3.sh
 Prompt ==================================================
@@ -23,8 +23,10 @@ Prompt ==================================================
 Pause => Presionar Enter para Iniciar, Ctrl-C para cancelar
 Prompt => Realizando limpieza inicial ....
 set feedback off
+Prompt Eliminando datos de TIPO_SERIE
+delete from tipo_serie;
 Prompt Eliminando datos de PLAYLIST
-delete from playlist;
+delete from PLAYLIST;
 Prompt Eliminando datos de USUARIO
 delete from usuario;
 Prompt Eliminando datos de SERIE
@@ -43,8 +45,7 @@ Prompt Eliminando datos de PAIS
 delete from pais;
 Prompt Eliminando datos de TIPO_CUENTA
 delete from tipo_cuenta;
-Prompt Eliminando datos de TIPO_SERIE
-delete from tipo_serie;
+
 Prompt => Realizando Carga de datos ....
 Prompt Cargando PAIS
 @carga-inicial/netmax-carga-inicial-pais.sql
