@@ -3,6 +3,7 @@
 --@Descripción: Script de eliminación de datos
 Prompt Seleccionar la PDB para realizar la eliminación de datos
 connect netmax_bdd/netmax_bdd@&pdb
+clear screen
 set serveroutput on
 Prompt Eliminando datos ...
 declare

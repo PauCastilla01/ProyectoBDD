@@ -26,9 +26,9 @@ begin
            
     end case;
     --commit;
-exception
-    when others then
-        --    --    rollback;
-        raise_application_error(-20000, 'Error en el trigger t_dml_usuario: ' || sqlerrm);
+-- exception
+--     when others then
+--         --    --    rollback;
+--         raise_application_error(-20000, 'Error en el trigger t_dml_usuario: ' || sqlerrm);
 end;
 /

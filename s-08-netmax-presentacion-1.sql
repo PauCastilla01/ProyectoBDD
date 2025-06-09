@@ -4,7 +4,7 @@
 clear screen
 whenever sqlerror exit rollback;
 Prompt Iniciando con la creación de la BDD.
-@s-00-elimina-usuario.sql
+--@s-00-elimina-usuario.sql
 @s-01-netmax-main-usuario.sql
 @s-02-netmax-ligas.sql
 @s-03-netmax-main-ddl.sql

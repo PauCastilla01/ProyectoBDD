@@ -52,9 +52,9 @@ begin
             raise_application_error(-20050, 'Operación no soportada en el trigger t_dml_archivo_programa. Solo se permiten operaciones INSERT, UPDATE o DELETE.');
     end case;
     --    commit;
-exception
-    when others then
-        --    rollback;
-        raise_application_error(-20000, 'Error en el trigger t_dml_archivo_programa: ' || sqlerrm);
+-- exception
+--     when others then
+--         --    rollback;
+--         raise_application_error(-20000, 'Error en el trigger t_dml_archivo_programa: ' || sqlerrm);
 end;
 /
