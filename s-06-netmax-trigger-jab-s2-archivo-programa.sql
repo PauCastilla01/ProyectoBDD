@@ -9,13 +9,11 @@ begin
     case
         when inserting then
             if :new.tamanio >10 then
-                insert into archivo_programa_f1(num_archivo,programa_id,tamanio)
-                values (:new.num_archivo, :new.programa_id, :new.tamanio);
-                insert into ts_archivo_programa_1(num_archivo,programa_id,archivo)
-                values (:new.num_archivo, :new.programa_id, :new.archivo);
-                insert into archivo_programa_f1 (num_archivo,programa_id,archivo)
-                    select num_archivo,programa_id,archivo from ts_archivo_programa_1 where num_archivo = :new.num_archivo;
-                delete from ts_archivo_programa_1 where num_archivo = :new.num_archivo;
+                insert into ti_archivo_programa_1(num_archivo,programa_id,archivo,tamanio)
+                values (:new.num_archivo, :new.programa_id, :new.archivo, :new.tamanio);
+                insert into archivo_programa_f1(num_archivo,programa_id,archivo,tamanio)
+                    select num_archivo,programa_id,archivo,tamanio from ti_archivo_programa_1 where num_archivo = :new.num_archivo;
+                delete from ti_archivo_programa_1 where num_archivo = :new.num_archivo;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en archivo_programa_1');
                 end if;
@@ -34,12 +32,12 @@ begin
 
         when deleting then
             if :old.tamanio >10 then
-                delete from archivo_programa_f1 where num_archivo = :old.num_archivo;
+                delete from archivo_programa_f1 where num_archivo = :old.num_archivo and programa_id = :old.programa_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en archivo_programa_1');
                 end if;
             elsif :old.tamanio <=10 then
-                delete from archivo_programa_f2 where num_archivo = :old.num_archivo;
+                delete from archivo_programa_f2 where num_archivo = :old.num_archivo and programa_id = :old.programa_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en archivo_programa_2');
                 end if;

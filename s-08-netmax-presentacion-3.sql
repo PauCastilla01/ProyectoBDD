@@ -23,8 +23,6 @@ Prompt ==================================================
 Pause => Presionar Enter para Iniciar, Ctrl-C para cancelar
 Prompt => Realizando limpieza inicial ....
 set feedback off
-Prompt Eliminando datos de TIPO_SERIE
-delete from tipo_serie;
 Prompt Eliminando datos de PLAYLIST
 delete from PLAYLIST;
 Prompt Eliminando datos de USUARIO
@@ -45,6 +43,8 @@ Prompt Eliminando datos de PAIS
 delete from pais;
 Prompt Eliminando datos de TIPO_CUENTA
 delete from tipo_cuenta;
+Prompt Eliminando datos de TIPO_SERIE
+delete from tipo_serie;
 
 Prompt => Realizando Carga de datos ....
 Prompt Cargando PAIS

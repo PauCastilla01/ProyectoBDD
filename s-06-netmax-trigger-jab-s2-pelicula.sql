@@ -13,8 +13,8 @@ begin
             from programa_f2
             where programa_id =:new.programa_id;
             if v_count >0 then 
-                insert into pelicula_f2(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente)
-                values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente);
+                insert into pelicula_f2(programa_id,duracion,sinopsis,clasificacion,PELICULA_ANTECEDENTE_ID)
+                values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.PELICULA_ANTECEDENTE_ID);
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se insertó el registro en pelicula_2');
                 end if;
@@ -23,8 +23,8 @@ begin
                 from programa_f1
                 where programa_id =:new.programa_id;
                 if v_count >0 then 
-                    insert into pelicula_f1(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente)
-                    values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente);
+                    insert into pelicula_f1(programa_id,duracion,sinopsis,clasificacion,PELICULA_ANTECEDENTE_ID)
+                    values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.PELICULA_ANTECEDENTE_ID);
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se insertó el registro en pelicula_1');
                     end if;
@@ -33,8 +33,8 @@ begin
                     from programa_f3
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into pelicula_f3(programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente)
-                        values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.pelicula_antecedente);
+                        insert into pelicula_f3(programa_id,duracion,sinopsis,clasificacion,PELICULA_ANTECEDENTE_ID)
+                        values (:new.programa_id, :new.duracion, :new.sinopsis, :new.clasificacion, :new.PELICULA_ANTECEDENTE_ID);
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se insertó el registro en pelicula_3');
                         end if;

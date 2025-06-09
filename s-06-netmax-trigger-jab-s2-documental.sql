@@ -23,13 +23,11 @@ begin
                 from programa_f1
                 where programa_id =:new.programa_id;
                 if v_count >0 then 
-                    insert into documental_f1(programa_id,tematica,duracion,trailer,pais_id)
+                    insert into ti_documental_1(programa_id,tematica,duracion,trailer,pais_id)
                     values (:new.programa_id, :new.tematica, :new.duracion, :new.trailer, :new.pais_id);
-                    insert into ts_documental_1(programa_id, trailer)
-                    values (:new.programa_id, :new.trailer);
-                    insert into documental_f1(programa_id, trailer) 
-                        select programa_id, trailer from ts_documental_1 where programa_id = :new.programa_id;
-                    delete from ts_documental_1 where programa_id = :new.programa_id;
+                    insert into documental_f1 (programa_id,tematica,duracion,trailer,pais_id)
+                        select programa_id,tematica,duracion,trailer,pais_id from ti_documental_1 where programa_id = :new.programa_id;
+                    delete from ti_documental_1 where programa_id = :new.programa_id;
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se insertó el registro en documental_1');
                     end if;
@@ -38,13 +36,11 @@ begin
                     from programa_f3
                     where programa_id =:new.programa_id;
                     if v_count >0 then 
-                        insert into documental_f3(programa_id,tematica,duracion,trailer,pais_id)
-                        values (:new.programa_id, :new.tematica, :new.duracion, :new.trailer, :new.pais_id);
-                        insert into ts_documental_3(programa_id, trailer)
-                        values (:new.programa_id, :new.trailer);
-                        insert into documental_f3(programa_id, trailer)
-                            select programa_id, trailer from ts_documental_3 where programa_id = :new.programa_id;
-                        delete from ts_documental_3 where programa_id = :new.programa_id;
+                        insert into ti_documental_3(programa_id,tematica,duracion,trailer,pais_id)
+                    values (:new.programa_id, :new.tematica, :new.duracion, :new.trailer, :new.pais_id);
+                    insert into documental_f3 (programa_id,tematica,duracion,trailer,pais_id)
+                        select programa_id,tematica,duracion,trailer,pais_id from ti_documental_3 where programa_id = :new.programa_id;
+                    delete from ti_documental_3 where programa_id = :new.programa_id;
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se insertó el registro en documental_3');
                         end if;

@@ -33,8 +33,23 @@ begin
                     raise_application_error(-20040, 'No se insertó el registro en usuario_f5');
                 end if;
             else
-                raise_application_error(-20010, 'El registro que intenta insertar no es valido. Valor de vigente debe ser 0 o 1 y tipo_cuenta_id debe ser 1,2 o 3'
-                    || ' Recibido: vigente=' || :new.vigente || ', tipo_cuenta_id=' || :new.tipo_cuenta_id);
+                 raise_application_error(
+        -20010,
+        'El registro que intenta insertar no es valido. '
+        || 'Valor de vigente debe ser 0 o 1 y tipo_cuenta_id debe ser 1,2 o 3. '
+        || 'Recibido: '
+        || 'usuario_id=' || :new.usuario_id || ', '
+        || 'email=' || :new.email || ', '
+        || 'nombre=' || :new.nombre || ', '
+        || 'ap_paterno=' || :new.ap_paterno || ', '
+        || 'ap_materno=' || :new.ap_materno || ', '
+        || 'fecha_ingreso=' || TO_CHAR(:new.fecha_ingreso, 'YYYY-MM-DD HH24:MI:SS') || ', '
+        || 'fecha_cuenta_fin=' || TO_CHAR(:new.fecha_cuenta_fin, 'YYYY-MM-DD HH24:MI:SS') || ', '
+        || 'vigente=' || :new.vigente || ', '
+        || 'tipo_cuenta_id=' || :new.tipo_cuenta_id || ', '
+        || 'password=' || :new.password || ', '
+        || 'num_tarjeta=' || :new.num_tarjeta
+    );
             end if;
 
             insert into usuario_f1(usuario_id, password, num_tarjeta)

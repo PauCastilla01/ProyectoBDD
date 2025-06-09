@@ -17,6 +17,7 @@ connect netmax_bdd/netmax_bdd@jabbdd_s1
 @s-06-netmax-trigger-tipo-cuenta.sql
 @s-06-netmax-trigger-tipo-serie.sql
 @s-06-netmax-trigger-pais.sql
+@s-06-netmax-trigger-historico.sql
 prompt =====================================
 prompt Creando triggers para jabbdd_s2
 prompt =====================================
@@ -31,6 +32,7 @@ connect netmax_bdd/netmax_bdd@jabbdd_s2
 @s-06-netmax-trigger-tipo-cuenta.sql
 @s-06-netmax-trigger-tipo-serie.sql
 @s-06-netmax-trigger-pais.sql
+@s-06-netmax-trigger-historico.sql
 prompt =====================================
 prompt Creando triggers para pcpbdd_s1
 prompt =====================================
@@ -45,6 +47,7 @@ connect netmax_bdd/netmax_bdd@pcpbdd_s1
 @s-06-netmax-trigger-tipo-cuenta.sql
 @s-06-netmax-trigger-tipo-serie.sql
 @s-06-netmax-trigger-pais.sql
+@s-06-netmax-trigger-historico.sql
 prompt =====================================
 prompt Creando triggers para pcpbdd_s2
 prompt =====================================
@@ -59,4 +62,5 @@ connect netmax_bdd/netmax_bdd@pcpbdd_s2
 @s-06-netmax-trigger-tipo-cuenta.sql
 @s-06-netmax-trigger-tipo-serie.sql
 @s-06-netmax-trigger-pais.sql
+@s-06-netmax-trigger-historico.sql
 prompt Listo!

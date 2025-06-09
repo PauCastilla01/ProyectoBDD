@@ -52,7 +52,7 @@ begin
             from programa_f1
             where programa_id =:old.programa_id;
             if v_count >0 then 
-                delete from playlist_f1 where programa_id =:old.programa_id;
+                delete from playlist_f1 where playlist_id =:old.playlist_id;
                 if sql%rowcount != 1 then
                     raise_application_error(-20040, 'No se eliminó el registro en playlist_1');
                 end if;
@@ -61,7 +61,7 @@ begin
                 from programa_f2
                 where programa_id =:old.programa_id;
                 if v_count >0 then 
-                    delete from playlist_f2 where programa_id =:old.programa_id;
+                    delete from playlist_f2 where playlist_id =:old.playlist_id;
                     if sql%rowcount != 1 then
                         raise_application_error(-20040, 'No se eliminó el registro en playlist_2');
                     end if;
@@ -70,7 +70,7 @@ begin
                     from programa_f3
                     where programa_id =:old.programa_id;
                     if v_count >0 then 
-                        delete from playlist_f3 where programa_id =:old.programa_id;
+                        delete from playlist_f3 where playlist_id =:old.playlist_id;
                         if sql%rowcount != 1 then
                             raise_application_error(-20040, 'No se eliminó el registro en playlist_3');
                         end if;

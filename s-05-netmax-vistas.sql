@@ -32,13 +32,13 @@ from serie_f3;
 --PELICULA
 Prompt creando vista PELICULA
 create or replace view PELICULA as
-select programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente
+select programa_id,duracion,sinopsis,clasificacion,PELICULA_ANTECEDENTE_ID
 from pelicula_f1
 union all
-select programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente
+select programa_id,duracion,sinopsis,clasificacion,PELICULA_ANTECEDENTE_ID
 from pelicula_f2
 union all
-select programa_id,duracion,sinopsis,clasificacion,pelicula_antecedente
+select programa_id,duracion,sinopsis,clasificacion,PELICULA_ANTECEDENTE_ID
 from pelicula_f3;
 
 --PROGRAMA
@@ -89,3 +89,9 @@ Prompt creando vista PAIS
 create or replace view PAIS as
 select pais_id,clave,nombre,continente
 from pais_r1;
+
+--Historico_Status_Programa
+Prompt creando vista HISTORICO_STATUS_PROGRAMA
+create or replace view HISTORICO_STATUS_PROGRAMA as
+select hsp.programa_id,hsp.HISTORICO_STATUS_PROG_ID,hsp.fecha_status,hsp.status_programa_id
+from historico_status_programa_f1 hsp;

@@ -42,11 +42,12 @@ dbms_output.put_line(to_char(sysdate,v_formato)
 || ' Eliminando datos de Historico Status Programa');
 delete from historico_status_programa;
 dbms_output.put_line(to_char(sysdate,v_formato)
-|| ' Eliminando datos de Status Programa');
-delete from status_programa;
-dbms_output.put_line(to_char(sysdate,v_formato)
 || ' Eliminando datos de Programa');
 delete from programa;
+dbms_output.put_line(to_char(sysdate,v_formato)
+|| ' Eliminando datos de Status Programa');
+delete from status_programa;
+
 --completar
 commit;
 exception
